@@ -7,6 +7,7 @@ const exportBtn = document.getElementById("export-btn");
 const settingsPanel = document.getElementById("settings-panel");
 const darkToggle = document.getElementById("dark-mode-toggle");
 const syncToggle = document.getElementById("sync-time-toggle");
+const full_preview = document.getElementById("preview-pane")
 const preview = document.getElementById("markdown-preview");
 const chapterSelector = document.getElementById("chapter-selector");
 const addChapterBtn = document.getElementById("add-chapter");
@@ -162,14 +163,14 @@ ficEditor.addEventListener("input", () => {
         updateStats();
 
         lastActivityTime = Date.now();
-        preview.style.display = "none";
+        full_preview.style.display = "none";
 
         if (previewTimeout) clearTimeout(previewTimeout);
         previewTimeout = setTimeout(() => {
             const now = Date.now();
             if (now - lastActivityTime >= 20000) {
                 updatePreview();
-                preview.style.display = "block";
+                full_preview.style.display = "block";
             }
         }, 20000);
     }
